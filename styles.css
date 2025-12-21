@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: left;
   justify-content: center;
-  background: #111;
+  background: radial-gradient(circle at center, #580707, #000000);
   color: #eee;
   font-family: "Inter", sans-serif;
   overflow: hidden;
@@ -43,7 +43,40 @@ h1 span {
   will-change: font-weight, transform;
 }
 
-.theme-toggle {
-  color: white;
-  
+.beginning-button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  padding: 15px 30px;
+  font-size: 1.2em;
+  color: #ffffff;
+  background-color: rgb(15, 91, 3);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: underline; 
 }
+
+
+
+
+.methodology {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 105%);
+  padding: 15px 30px;
+  font-size: 1.2em;
+  color: #ffffff;
+  background-color: rgb(15, 91, 3);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: underline; 
+}
+
+
+.git {
+  left: 1%;
+  bottom: 1%;
+  position: absolute;
+} 
