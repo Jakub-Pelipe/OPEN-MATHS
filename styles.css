@@ -22,14 +22,12 @@ body {
   font-size: clamp(2px, 3vw, 30px);
   line-height: 1.05;
   user-select: none;
-}
-
-/* the name text*/
-.text-1 {
   font-size: 1.5em;
   margin-top: 0.4em;
   opacity: 0.85;
 }
+
+
 
 /*the text under name*/
 .text-2 {
