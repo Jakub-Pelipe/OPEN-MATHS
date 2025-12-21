@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "This is my A-level computerscience project which integrates a local LLM model into a web format, aiming to help students with learning mathematics.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jakub-Pelipe/OPEN-MATHS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Jakub-Pelipe/OPEN-MATHS/issues"
+  },
+  "homepage": "https://github.com/Jakub-Pelipe/OPEN-MATHS#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  }
+}
