@@ -76,9 +76,9 @@ h1 span {
 
 /* Methodology button */
 /* This is the button in its default configuration */
-methodology-button {
+.methodology-button {
   position: absolute;
-  background-color: rgb(1, 112, 204);
+  background-color: rgb(102, 112, 204);
   top: 70%;
   left: 50%;
   transform: translate(-50%, 105%);
@@ -86,20 +86,19 @@ methodology-button {
   font-size: 1.2em;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px;
+  transition: all 0.4s ease-in-out;
+}
 
 .methodology-button:hover {
   background: rgb(73, 83, 171);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transform: translate(-50%, 108%); /* Lifts slightly higher */
+  transform: translate(-50%, 102%); /* Lifts slightly higher */
   box-shadow: 0 4px 15px;
-}
 
 
 
-  background-color: rgb(102, 112, 204);
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 
