@@ -43,6 +43,8 @@ h1 span {
   will-change: font-weight, transform;
 }
 
+/* Beginning button */
+/* This is the button in its default configuration */
 .beginning-button {
   position: absolute;
   top: 70%;
@@ -50,28 +52,54 @@ h1 span {
   transform: translate(-50%, -100%);
   padding: 15px 30px;
   font-size: 1.2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
-  background-color: rgb(15, 91, 3);
-  border-radius: 5px;
+  background-color: rgb(102, 112, 204);
+  border-radius: 8px;
   cursor: pointer;
-  text-decoration: underline; 
+  box-shadow: 0 4px 15px;
+  transition: all 0.4s ease-in-out;
+
 }
 
+/* this changes how the buttons looks like when being hovered over*/
+.beginning-button:hover {
+  background: rgb(73, 83, 171);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -102%); /* Lifts slightly higher */
+  box-shadow: 0 4px 15px;
+
+}
+
+/* Beginning button end */
 
 
-
-.methodology {
+/* Methodology button */
+/* This is the button in its default configuration */
+methodology-button {
   position: absolute;
+  background-color: rgb(1, 112, 204);
   top: 70%;
   left: 50%;
   transform: translate(-50%, 105%);
   padding: 15px 30px;
   font-size: 1.2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #ffffff;
-  background-color: rgb(15, 91, 3);
+
+.methodology-button:hover {
+  background: rgb(73, 83, 171);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, 108%); /* Lifts slightly higher */
+  box-shadow: 0 4px 15px;
+}
+
+
+
+  background-color: rgb(102, 112, 204);
   border-radius: 5px;
   cursor: pointer;
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 
@@ -79,4 +107,4 @@ h1 span {
   left: 1%;
   bottom: 1%;
   position: absolute;
-} 
+}
