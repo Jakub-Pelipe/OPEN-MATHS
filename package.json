@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "description": "This is my A-level computerscience project which integrates a local LLM model into a web format, aiming to help students with learning mathematics.",
+  "description": "This is my A-level computerscience project which integrates a machine learning into a web format, aiming to help students with learning mathematics.",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
