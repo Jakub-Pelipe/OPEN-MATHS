@@ -40,6 +40,10 @@ jobs:
         run: npm run build
         working-directory: ./VUE-RECODE
 
+      - name: Create .nojekyll to disable Jekyll processing
+        run: touch dist/.nojekyll
+        working-directory: ./VUE-RECODE
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
