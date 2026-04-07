@@ -2,7 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'node:url'
 
+const base = process.env.NODE_ENV === 'production' ? './' : '/'
+
 export default defineConfig({
+  base,
   plugins: [vue()],
   resolve: {
     alias: {
