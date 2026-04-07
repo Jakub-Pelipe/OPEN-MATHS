@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Login & Signup</title>
+
+  <link rel="stylesheet" href="loginstyle.css">
+
+
+</head>
+<body>
+<div class="auth-card">
+  <div class="form-container">
+    <div class="mode-header">
+      <h1 id="formHeading">Login</h1>
+      <button type="button" id="switchModeBtn" class="toggle-mode-btn">Switch to Sign Up</button>
+    </div>
+
+    <form id="authForm" class="auth-form" novalidate>
+      <!-- LOGIN FIELDS (visible by default) -->
+      <div id="loginFields" class="field-group">
+        <div class="input-group">
+          <label for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" name="loginEmail" placeholder="hello@example.com" autocomplete="email">
+        </div>
+        <div class="input-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="loginPassword" placeholder="••••••••" autocomplete="current-password">
+        </div>
+      </div>
+
+      <!-- SIGNUP FIELDS (hidden initially) -->
+      <div id="signupFields" class="field-group hidden-group">
+        <div class="input-group">
+          <label for="signupName">User name</label>
+          <input type="text" id="signupName" name="signupName" placeholder="Alex Morgan" autocomplete="name">
+        </div>
+        <div class="input-group">
+          <label for="signupEmail">Email address</label>
+          <input type="email" id="signupEmail" name="signupEmail" placeholder="hello@example.com" autocomplete="email">
+        </div>
+        <div class="input-group">
+          <label for="signupPassword">Create password</label>
+          <input type="password" id="signupPassword" name="signupPassword" placeholder="create strong password" autocomplete="new-password">
+        </div>
+        <div class="input-group">
+          <label for="signupConfirm">Confirm password</label>
+          <input type="password" id="signupConfirm" name="signupConfirm" placeholder="confirm password" autocomplete="off">
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn" class="submit-btn">Log In</button>
+      <div id="formMessage" class="message-area"></div>
+    </form>
+
+
+
+<script>
+  (function() {
+    // ----- DOM elements -----
+    const headingEl = document.getElementById('formHeading');
+    const loginGroup = document.getElementById('loginFields');
+    const signupGroup = document.getElementById('signupFields');
+    const submitBtn = document.getElementById('submitBtn');
+    const toggleBtn = document.getElementById('switchModeBtn');
+    const authForm = document.getElementById('authForm');
+    const messageDiv = document.getElementById('formMessage');
+
+    // ----- input fields (for easier validation & clearing) -----
+    // Login fields
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    // Signup fields
+    const signupName = document.getElementById('signupName');
+    const signupEmail = document.getElementById('signupEmail');
+    const signupPassword = document.getElementById('signupPassword');
+    const signupConfirm = document.getElementById('signupConfirm');
+
+    // state: true = login mode, false = signup mode
+    let isLoginMode = true;
+
+    // ----- helper: clear all input values in both groups (resets forms when toggling) -----
+    function resetAllFields() {
+      // login fields clear
+      if (loginEmail) loginEmail.value = '';
+      if (loginPassword) loginPassword.value = '';
+      // signup fields clear
+      if (signupName) signupName.value = '';
+      if (signupEmail) signupEmail.value = '';
+      if (signupPassword) signupPassword.value = '';
+      if (signupConfirm) signupConfirm.value = '';
+    }
+
+    // ----- enable/disable fields inside a container -----
+    function setDisabledOnContainer(container, disabled) {
+      if (!container) return;
+      const inputs = container.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        input.disabled = disabled;
+      });
+    }
+
+    // ----- clear any message & reset style -----
+    function clearMessage() {
+      if (messageDiv) {
+        messageDiv.textContent = '';
+        messageDiv.classList.remove('error-msg', 'success-msg');
+      }
+    }
+
+    // ----- show feedback message (error or success) -----
+    function showMessage(text, isError = true) {
+      if (messageDiv) {
+        messageDiv.textContent = text;
+        messageDiv.classList.remove('error-msg', 'success-msg');
+        if (isError) {
+          messageDiv.classList.add('error-msg');
+        } else {
+          messageDiv.classList.add('success-msg');
+        }
+        // auto clear after 3.5 secs for success, but keep error longer? but fine.
+        setTimeout(() => {
+          if (messageDiv.textContent === text) {
+            messageDiv.classList.remove('error-msg', 'success-msg');
+            messageDiv.textContent = '';
+          }
+        }, 3200);
+      }
+    }
+
+    // ----- update UI based on mode (login/signup) -----
+    function updateUIMode() {
+      if (isLoginMode) {
+        // LOGIN MODE
+        headingEl.textContent = 'Login';
+        submitBtn.textContent = 'Log In';
+        toggleBtn.textContent = 'Switch to Sign Up';
+        // show login group, hide signup group
+        loginGroup.classList.remove('hidden-group');
+        signupGroup.classList.add('hidden-group');
+        // enable login inputs, disable signup inputs (so they don't interfere)
+        setDisabledOnContainer(loginGroup, false);
+        setDisabledOnContainer(signupGroup, true);
+      } else {
+        // SIGNUP MODE
+        headingEl.textContent = 'Sign Up';
+        submitBtn.textContent = 'Sign Up';
+        toggleBtn.textContent = 'Switch to Login';
+        // show signup group, hide login group
+        signupGroup.classList.remove('hidden-group');
+        loginGroup.classList.add('hidden-group');
+        // enable signup inputs, disable login inputs
+        setDisabledOnContainer(signupGroup, false);
+        setDisabledOnContainer(loginGroup, true);
+      }
+      // clear any leftover message when toggling
+      clearMessage();
+      // reset all field values for a fresh experience (clean start avoids confusion)
+      resetAllFields();
+    }
+
+    // ----- Validation logic for current mode -----
+    function validateAndSubmit() {
+      clearMessage();
+
+      if (isLoginMode) {
+        // LOGIN VALIDATION
+        const emailVal = loginEmail ? loginEmail.value.trim() : '';
+        const passwordVal = loginPassword ? loginPassword.value : '';
+
+        if (!emailVal) {
+          showMessage('✉️ Please enter your email address.', true);
+          loginEmail?.focus();
+          return false;
+        }
+        if (!isValidEmail(emailVal)) {
+          showMessage('📧 Please enter a valid email (e.g., name@domain.com).', true);
+          loginEmail?.focus();
+          return false;
+        }
+        if (!passwordVal) {
+          showMessage('🔐 Password cannot be empty.', true);
+          loginPassword?.focus();
+          return false;
+        }
+        if (passwordVal.length < 4) {
+          showMessage('🔒 Password must be at least 4 characters (demo rule).', true);
+          loginPassword?.focus();
+          return false;
+        }
+
+        // Success login simulation
+        showMessage(`✨ Welcome back! Logged in as ${emailVal} (demo only)`, false);
+        // Optional: you can log to console
+        console.log(`[LOGIN] email: ${emailVal}`);
+        return true;
+      }
+      else {
+        // SIGNUP VALIDATION
+        const nameVal = signupName ? signupName.value.trim() : '';
+        const emailVal = signupEmail ? signupEmail.value.trim() : '';
+        const passwordVal = signupPassword ? signupPassword.value : '';
+        const confirmVal = signupConfirm ? signupConfirm.value : '';
+
+        if (!nameVal) {
+          showMessage('👤 Please enter your full name.', true);
+          signupName?.focus();
+          return false;
+        }
+        if (!emailVal) {
+          showMessage('📧 Email address is required for signup.', true);
+          signupEmail?.focus();
+          return false;
+        }
+        if (!isValidEmail(emailVal)) {
+          showMessage('📧 Please provide a valid email address.', true);
+          signupEmail?.focus();
+          return false;
+        }
+        if (!passwordVal) {
+          showMessage('🔒 Create a password to sign up.', true);
+          signupPassword?.focus();
+          return false;
+        }
+        if (passwordVal.length < 4) {
+          showMessage('🔐 Password must be at least 4 characters (stronger recommended).', true);
+          signupPassword?.focus();
+          return false;
+        }
+        if (passwordVal !== confirmVal) {
+          showMessage('⚠️ Passwords do not match. Please re-enter.', true);
+          signupConfirm?.focus();
+          return false;
+        }
+
+        // Success signup simulation
+        showMessage(`🎉 Account created for ${nameVal} (${emailVal})! You can now login.`, false);
+        console.log(`[SIGNUP] name: ${nameVal}, email: ${emailVal}`);
+        return true;
+      }
+    }
+
+    // simple email regex (basic but effective)
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+      return emailRegex.test(email);
+    }
+
+    // ----- toggle between modes (called by switch button) -----
+    function toggleMode() {
+      // flip mode
+      isLoginMode = !isLoginMode;
+      updateUIMode();
+    }
+
+    // ----- handle form submit -----
+    function onFormSubmit(event) {
+      event.preventDefault();
+      validateAndSubmit();
+    }
+
+    // ----- initial setup: ensure correct state on page load -----
+    function init() {
+      // set default: login mode active, signup disabled
+      isLoginMode = true;
+      // manually set visibility and disabled states
+      loginGroup.classList.remove('hidden-group');
+      signupGroup.classList.add('hidden-group');
+      setDisabledOnContainer(loginGroup, false);
+      setDisabledOnContainer(signupGroup, true);
+      // clear all values and heading / button texts
+      headingEl.textContent = 'Login';
+      submitBtn.textContent = 'Log In';
+      toggleBtn.textContent = 'Switch to Sign Up';
+      resetAllFields();
+      clearMessage();
+      // attach event listeners
+      toggleBtn.addEventListener('click', toggleMode);
+      authForm.addEventListener('submit', onFormSubmit);
+    }
+
+    // run init after DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+</body>
+</html>
