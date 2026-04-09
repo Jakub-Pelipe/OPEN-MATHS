@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 const base = process.env.NODE_ENV === 'production' ? './' : '/'
 
 export default defineConfig({
-  base,
+  base: '/OPEN-MATHS/',
   plugins: [vue()],
   resolve: {
     alias: {
