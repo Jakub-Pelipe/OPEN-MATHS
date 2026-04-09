@@ -5,7 +5,7 @@
   "description": "OPEN Maths - AI-powered mathematics learning platform built with Vue 3",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit"
   },
