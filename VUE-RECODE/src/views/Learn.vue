@@ -206,26 +206,24 @@ const allLessons: Lesson[] = [
         duration: 50,
         lessons: 14,
     },
-    {
-        id: 4,
-        title: "Advanced Calculus",
-        description:
-            "Explore differentiation, integration, and their applications",
-        category: "Calculus",
-        difficulty: "Advanced",
-        duration: 90,
-        lessons: 20,
-    },
-    {
-        id: 5,
-        title: "Statistics Essentials",
-        description:
-            "Probability, distributions, and hypothesis testing fundamentals",
-        category: "Statistics",
-        difficulty: "Intermediate",
-        duration: 55,
-        lessons: 13,
-    },
+    // {
+    //   id: 4,
+    //   title: 'Advanced Calculus',
+    //   description: 'Explore differentiation, integration, and their applications',
+    //   category: 'Calculus',
+    //   difficulty: 'Advanced',
+    //   duration: 90,
+    //   lessons: 20
+    // },
+    // {
+    //   id: 5,
+    //   title: 'Statistics Essentials',
+    //   description: 'Probability, distributions, and hypothesis testing fundamentals',
+    //   category: 'Statistics',
+    //   difficulty: 'Intermediate',
+    //   duration: 55,
+    //   lessons: 13
+    // },
     {
         id: 6,
         title: "Geometry in Practice",
@@ -236,24 +234,24 @@ const allLessons: Lesson[] = [
         duration: 40,
         lessons: 11,
     },
-    {
-        id: 7,
-        title: "Linear Algebra",
-        description: "Matrices, vectors, and systems of linear equations",
-        category: "Algebra",
-        difficulty: "Advanced",
-        duration: 75,
-        lessons: 18,
-    },
-    {
-        id: 8,
-        title: "Complex Numbers",
-        description: "Understanding imaginary numbers and complex arithmetic",
-        category: "Algebra",
-        difficulty: "Advanced",
-        duration: 65,
-        lessons: 16,
-    },
+    // {
+    //   id: 7,
+    //   title: 'Linear Algebra',
+    //   description: 'Matrices, vectors, and systems of linear equations',
+    //   category: 'Algebra',
+    //   difficulty: 'Advanced',
+    //   duration: 75,
+    //   lessons: 18
+    // },
+    // {
+    //   id: 8,
+    //   title: 'Complex Numbers',
+    //   description: 'Understanding imaginary numbers and complex arithmetic',
+    //   category: 'Algebra',
+    //   difficulty: 'Advanced',
+    //   duration: 65,
+    //   lessons: 16
+    // }
 ];
 
 const categories = computed(() => {

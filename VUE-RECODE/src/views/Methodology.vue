@@ -104,26 +104,6 @@
             </div>
         </section>
 
-        <!-- Learning Outcomes Section -->
-        <section class="outcomes-section">
-            <div class="outcomes-container">
-                <h2>Expected Learning Outcomes</h2>
-                <div class="outcomes-grid">
-                    <div
-                        v-for="outcome in outcomes"
-                        :key="outcome.id"
-                        class="outcome-card"
-                    >
-                        <div class="outcome-number">
-                            {{ outcome.percentage }}%
-                        </div>
-                        <h3>{{ outcome.title }}</h3>
-                        <p>{{ outcome.description }}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- CTA Section -->
         <section class="methodology-cta">
             <div class="cta-container">
