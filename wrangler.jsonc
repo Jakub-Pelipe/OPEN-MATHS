@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "open-maths",
+  "compatibility_date": "2026-06-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "VUE-RECODE"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
