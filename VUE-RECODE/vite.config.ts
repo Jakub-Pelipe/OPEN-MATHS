@@ -1,40 +1,40 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { fileURLToPath } from 'node:url'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { fileURLToPath } from "node:url";
 
-const base = process.env.NODE_ENV === 'production' ? './' : '/'
+const base = process.env.NODE_ENV === "production" ? "./" : "/";
 
 export default defineConfig({
-  base: '/OPEN-MATHS/',
+  base: "./",
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
   server: {
     port: 5173,
     open: true,
-    cors: true
+    cors: true,
   },
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     sourcemap: false,
-    minify: 'esbuild',
+    minify: "esbuild",
     terserOptions: {
       compress: {
-        drop_console: true
-      }
+        drop_console: true,
+      },
     },
     rollupOptions: {
       output: {
         manualChunks: {
-          'vue-vendor': ['vue', 'vue-router']
-        }
-      }
-    }
+          "vue-vendor": ["vue", "vue-router"],
+        },
+      },
+    },
   },
   optimizeDeps: {
-    include: ['vue', 'vue-router']
-  }
-})
+    include: ["vue", "vue-router"],
+  },
+});

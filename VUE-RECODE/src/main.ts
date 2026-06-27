@@ -1,39 +1,39 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import App from './App.vue'
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import App from "./App.vue";
 
 // Import views
-import Home from './views/Home.vue'
-import Auth from './views/Auth.vue'
-import Learn from './views/Learn.vue'
-import Methodology from './views/Methodology.vue'
+import Home from "./views/Home.vue";
+import Auth from "./views/Auth.vue";
+import Learn from "./views/Learn.vue";
+import Methodology from "./views/Methodology.vue";
 
 // Import global styles
-import './assets/global.css'
+import "./assets/global.css";
 
 // Define routes
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: Home,
-    name: 'home'
+    name: "home",
   },
   {
-    path: '/auth',
+    path: "/auth",
     component: Auth,
-    name: 'auth'
+    name: "auth",
   },
   {
-    path: '/learn',
+    path: "/learn",
     component: Learn,
-    name: 'learn'
+    name: "learn",
   },
   {
-    path: '/methodology',
+    path: "/methodology",
     component: Methodology,
-    name: 'methodology'
-  }
-]
+    name: "methodology",
+  },
+];
 
 // Create router instance
 const router = createRouter({
@@ -41,18 +41,18 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { top: 0 }
+      return { top: 0 };
     }
-  }
-})
+  },
+});
 
 // Create app instance
-const app = createApp(App)
+const app = createApp(App);
 
 // Use router
-app.use(router)
+app.use(router);
 
 // Mount app
-app.mount('#app')
+app.mount("#app");
